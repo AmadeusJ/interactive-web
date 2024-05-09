@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+    <style>
+
+      body {
+        background-color: #383737;
+      }
+
+      /* 
+        !! before & after 가상요소 !!
+        -> 가상요소는 HTML 문서의 실제 내용에 영향을 주지 않으면서, 선택한 요소의 특정 부분에 스타일을 적용할 수 있게 해준다.
+        -> 가상요소는 선택자 뒤에 두 개의 콜론(::)을 붙여 사용한다.
+        -> 가상요소는 부모 요소의 스타일을 상속 받지 않는 고유한 스타일링을 가질 수 있다.
+
+        
+        ::before와 ::after 가상 요소는 요소의 위치상 앞이나 뒤에 실제로 위치하는 것이 아니라, 
+        해당 요소의 내용(content) 앞이나 뒤에 삽입된다는 의미입니다.
+
+        -----------------------------------------------------
+        [ 자세한 설명 ]
+
+        1. 요소의 앞과 뒤에 내용 삽입:
+          ::before는 요소의 실제 내용이 시작되기 전에 삽입됩니다.
+          ::after는 요소의 실제 내용이 끝난 후에 삽입됩니다.
+        2. 시각적 위치:
+          ::before와 ::after는 부모 요소의 내용 앞이나 뒤에 나타나지만, 부모 요소의 내부에 포함됩니다.
+          이들 가상 요소는 부모 요소의 자식 요소처럼 취급되지만, HTML에 직접 작성되지 않고 CSS로 추가됩니다.
+        3. 사용 예시:
+          - 스타일링 요소 추가: 시각적 장식, 아이콘, 배경 효과 등.
+          - 레이아웃 보조: 가상의 레이아웃 요소 추가.
+        -----------------------------------------------------
+        [ 사용법 ]
+        1. 콘텐츠 추가:
+            content 속성을 사용하여 텍스트나 다른 콘텐츠를 삽입할 수 있습니다.
+            예: content: "Hello";는 해당 요소 앞이나 뒤에 "Hello"라는 텍스트를 추가합니다.
+
+        2. 스타일링:
+          독립적인 스타일링이 가능합니다. position, color, background, border 등의 스타일을 적용할 수 있습니다.
+          가상 요소는 부모 요소의 스타일을 상속받지 않는 고유한 스타일링을 가질 수 있습니다.
+
+        3. 레이아웃 구성:
+          추가적인 장식 요소를 만들거나, 특정 레이아웃을 구현할 때 유용합니다.
+          예를 들어, 요소의 배경에 이미지나 도형을 추가하는 데 사용됩니다.
+        
+        4. 의사 클래스와 결합:
+          :hover, :active, :focus 등의 의사 클래스와 결합하여 동적인 효과를 만들 수 있습니다.
+          예: button:hover::before { content: "Click!"; }는 버튼에 마우스를 올렸을 때 "Click!"이라는 텍스트를 추가합니다.
+
+
+        ********** 가상요소 사용 시 주의사항 **********
+          - 필수 속성: content 속성은 필수입니다. 값을 비워둘 수도 있지만 반드시 선언해야 가상 요소가 생성됩니다.
+          - 위치 지정: position: absolute; 등을 사용하여 부모 요소 안에서 가상 요소를 원하는 위치에 배치할 수 있습니다.
+          - z-index: 가상 요소의 z-index는 부모 요소와 독립적으로 설정할 수 있어, 요소 간의 겹침 순서를 조정할 수 있습니다.
+      */
+
+      .pulse::before, 
+      .pulse::after { 
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: #8a82fb;
+        border-radius: 50%;
+        z-index: -1;
+        opacity: 0.7;
+      }
+
+      .pulse::before {
+        animation: pulse 2s ease-out infinite;
+      }
+      .pulse::after {
+        animation: pulse 2s 1s ease-out infinite;
+      }
+
+      /*
+        !! @keyframes 애니메이션 스타일 지정 !!
+        -> @keyframes는 애니메이션을 만들 때 사용하는 CSS at-rule입니다.
+        ///////////////////////////////
+            @keyframes animation-name {
+              0% {
+                -> 초기 상태 
+              }
+              100% {
+                -> 최종 상태 
+              }
+            }
+        ///////////////////////////////
+        1. 애니메이션 정의:
+          @keyframes를 사용하여 애니메이션의 다양한 단계와 각 단계에서의 스타일을 정의합니다.
+          각 단계는 퍼센트 값으로 표현되며, 애니메이션의 시작(0%)과 끝(100%)뿐만 아니라 중간 단계도 지정할 수 있습니다.
+
+        2. 변화 단계 설정:
+          애니메이션이 시작에서 끝까지 어떻게 변하는지를 설정할 수 있습니다.
+          예를 들어, 크기, 색상, 위치, 불투명도 등의 속성을 시간에 따라 변경할 수 있습니다.
+
+        3. 애니메이션 이름 지정:
+          애니메이션을 정의할 때 이름을 지정하며, 이 이름을 사용하여 요소에 애니메이션을 적용합니다.
+
+      */
+      @keyframes pulse {
+        100% {
+          transform: scale(2.5);
+          opacity: 0;
+        }
+      } 
+
+      .pulse {
+        height: 150px;
+        width: 150px;
+        background: linear-gradient(#8a82fb, #407ed7);
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 50px;
+        color: white;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="pulse">
+      <i class="fas fa-bell"></i>
+    </div>
+
+  </body>
+</html>

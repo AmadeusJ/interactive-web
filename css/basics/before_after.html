@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Before and After Example</title>
+<style>
+
+  .example::before {
+    content: "★ ";
+    color: gold;
+  }
+  .example::after {
+    content: " ✔";
+    color: green;
+  }
+
+  .box {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    background-color: lightblue;
+    margin: 20px;
+  }
+  .box::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+  }
+  .box::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: green;
+  }
+
+</style>
+</head>
+<body>
+
+
+  <p class="example">This is a paragraph.</p>
+
+  <div class="box"></div>
+</body>
+</html>
