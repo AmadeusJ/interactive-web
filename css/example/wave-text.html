@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background-color: #383737;
+            }
+
+            .text-animation {
+                background: #383737;
+                min-height: 50vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .text-wrapper {
+                position: relative;
+            }
+            .text-wrapper h2 {
+                z-index: 4;
+                color: #fff;
+                font-size: 15vw;
+                white-space: nowrap;
+                position: absolute;
+                transform: translate(-50%, -62%);
+            }
+
+            /*
+            !!! -webkit- 란? !!! 
+            -webkit- 접두사는 CSS에서 WebKit 브라우저 엔진을 사용하는 브라우저에 대해 특정 CSS 속성을 적용할 때 사용됩니다. 
+            WebKit은 사파리(Safari)와 구글 크롬(Google Chrome)의 초기 버전 등에서 사용되는 렌더링 엔진입니다. 
+            현재는 크롬이 Blink 엔진으로 전환했지만, 여전히 많은 CSS 속성에서 -webkit- 접두사를 사용하는 것이 관례입니다.
+            
+            [ 역할 및 기능 ]
+            1. 브라우저 호환성 향상:
+                특정 CSS 기능이 모든 브라우저에 동일하게 구현되지 않았을 때, 
+                WebKit 기반 브라우저에서 해당 기능을 활성화하기 위해 사용됩니다.
+
+            2. 실험적 기능 지원:
+                최신 CSS 기능이 표준화되기 전에 WebKit 기반 브라우저에서 실험적으로 사용할 수 있도록 합니다.
+
+            3. 벤더 프리픽스 사용:
+                -webkit-은 벤더 프리픽스(Vendor Prefix) 중 하나로, 특정 브라우저 엔진의 벤더(제작사) 이름을 앞에 붙여 사용합니다. 
+                다른 예로는 -moz- (Mozilla), -ms- (Microsoft), -o- (Opera) 등이 있습니다.
+
+            [ 요약 ]
+                - WebKit 기반 브라우저에서 CSS 기능을 활성화하기 위해 사용.
+                - 최신 CSS 기능을 실험적으로 사용할 수 있도록 지원.
+                - 브라우저 간 호환성을 높이기 위한 벤더 프리픽스 중 하나.                
+
+            */
+
+            .text-wrapper h2:nth-child(1) {
+                color: transparent;
+                -webkit-text-stroke: 2px #fff;
+            }
+            .text-wrapper h2:nth-child(2) {
+                color: #fff;
+                animation: wave 4s ease-in-out infinite;
+            }
+
+            /*
+        !!! clip-path !!!
+        [ clip-path 속성 개요 ]
+        - clip-path는 CSS 속성 중 하나로, 요소의 특정 부분만 표시하고 나머지는 잘라내는 데 사용됩니다. 
+        이를 통해 다양한 형태의 클리핑(잘라내기) 효과를 쉽게 적용할 수 있습니다.
+
+
+            */
+
+            @keyframes wave {
+                0%,
+                100% {
+                    clip-path: polygon(
+                        0% 46%,
+                        17% 45%,
+                        34% 50%,
+                        56% 61%,
+                        69% 62%,
+                        86% 60%,
+                        100% 51%,
+                        100% 100%,
+                        0% 100%
+                    );
+                }
+                50% {
+                    clip-path: polygon(
+                        0% 59%,
+                        16% 64%,
+                        33% 65%,
+                        52% 61%,
+                        70% 52%,
+                        85% 47%,
+                        100% 48%,
+                        100% 100%,
+                        0% 100%
+                    );
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="text-animation">
+                <div class="text-wrapper">
+                    <h2>Follow</h2>
+                    <h2>Follow</h2>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
